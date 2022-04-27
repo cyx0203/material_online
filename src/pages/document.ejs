@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <%= context.config.title %>
+    </title>
+    <style>
+        #root {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+    <script>
+        window.MobWeb = {
+            initFlag: false,
+            baseUrl: '<%=context.config.define.TRADE_URL %>'
+        };
+
+        //页面离开时处理
+        window.onbeforeunload = function (e) {
+            e = e || window.event
+            // 兼容IE8和Firefox 4之前的版本
+            if (e) {
+                e.returnValue = '关闭提示'
+            }
+            // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+            return '关闭提示'
+        }
+
+        // window.addEventListener('beforeunload', function (e) {
+        //         // Cancel the event
+        //         e.preventDefault();
+        //         // Chrome requires returnValue to be set
+        //         e.returnValue = '自定义文本';
+        //     });
+    </script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
